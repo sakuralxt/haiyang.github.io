@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>企业查询</title>
+    <script type="text/javascript" src="./jweixin-1.6.0.js"></script>
+    <!--  <script type="text/javascript" src="./uni.webview.1.5.3.js"></script> -->
+        <!-- 企查查 -->
+    <script src="https://c.qcc.com/qcc_components.js?2bc02fb19c884792949a3d359274f3c8"></script>
+
+    <style>
+    body{
+      transform: scale(2.5); /* 设置缩放比例，可以根据需要进行调整 */
+      transform-origin: 0 0;
+
+      width: 100%; /* 设置页面的总宽度为100% */
+      max-width: 300px; /* 设置页面的最大宽度为800px，根据需要进行调整 */
+      max-height: 700px;
+      margin: 20 auto; /* 居中对齐页面内容 */
+
+    }
+    .qcc-result-box{
+      max-width: 300px;
+      max-height: 300px;
+    }
+    /*
+    .container{
+      max-width: 100%; /* 设置容器的最大宽度为100%，避免内容超出页面最大宽度
+      padding: 0 20px;
+    }
+
+      .container {
+        margin-top: 30px;
+      }
+
+      .qcc-component-autocomplete-large {
+        height: 80px;
+      }
+
+      .qcc-component-autocomplete .qcc-input-affix-wrapper .qcc-input {
+        font-size: 34px;
+      }
+
+      .qcc-result-box .qcc-result-content .qcc-result-company-item-large {
+        font-size: 34px;
+      }
+
+/*
+      .qcc-result-company-item-large {
+      	line-height: 12px;
+      }
+      */
+    </style>
+  </head>
+  <body>
+<div class="container">
+    <script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&&trid=ac11000117103870879053604ebba5&asid=AQAAAACQb/Jlrb0VGwAAAABNMw2+657xtg==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+</script>
+
+    <div class="container">
+      <div id="qcc_sdk"></div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        window.QCC.init({
+          el: 'qcc_sdk',
+          placeholder: '请输入您想要搜索的企业关键字',
+          // fontSize: "24px",
+          class: 'search-box',
+          onSelect: (res)=>{
+            console.log('选中下拉框内容时的回调', res)
+
+            // window.postMessage('/pages/sub-index/form/index')
+
+            cc(res);
+
+            // const miniProgram = wx.getMiniProgramContext()
+            //  miniProgram.postMessage({data:res})
+          },
+        })
+      }, false)
+
+      document.addEventListener('UniAppJSBridgeReady', function() {
+        uni.getEnv(function(res) {
+          console.log('当前环境：' + JSON.stringify(res));
+        });
+      });
+    </script>
+
+</div>
+  </body>
+
+  <script type="text/javascript">
+    function cc(res) {
+
+      // window.parent.postMessage({ data: 'Hello from H5' }, '*');
+
+      // window.postMessage({ data: 'Hello from H5' }, '*');
+
+
+      // console.log('消息已发送，即将跳转页面');
+
+/*
+      wx.navigateBack();
+
+try {
+  uni.navigateTo({
+      url: 'pages/sub-index/form/index'
+    })
+} catch (e) {
+  console.log('catch e: ', e);
+} finally {
+  console.log('finally');
+}
+*/
+
+
+jWeixin.miniProgram.navigateTo({url: '/pages/submit-order/submit-order?param='+JSON.stringify(res) })
+
+/*
+uni.reLaunch({// 跳回小程序的路径
+  url:'/pages/index/index?param=res',// 以下回调方法可以不要，如果需要调试的时候可以加上
+  success:function (res) {console.log("success",res);},
+  fail:function (res) {console.log("fail",res);},
+  complete:function (res) {console.log("complete",res);}
+})
+*/
+    }
+  </script>
+
+</html>
